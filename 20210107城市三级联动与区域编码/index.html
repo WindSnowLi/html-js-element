@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>城市三级联动与行政编码</title>
+    <link href="./css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+</head>
+
+<body>
+    <!--省份选择-->
+    <label for="prov"></label>
+    <select id="prov" name="province" onchange="showCity(this)" class="doc-vld-select">
+        <option value="">请选择省份</option>
+    </select>
+
+    <!--城市选择-->
+    <label for="city"></label>
+    <select id="city" name="city" onchange="showCountry(this)" class="doc-vld-select">
+        <option value="">请选择城市</option>
+    </select>
+
+    <!--县区选择-->
+    <label for="country"></label>
+    <select id="country" name="country" onchange="selecCountry(this)" class="doc-vld-select">
+        <option value="">请选择县区</option>
+    </select>
+    <label>
+        <input id="addressnumber" type="text" name="addressnumber" placeholder="区划代码" class="doc-vld-select">
+    </label>
+    </form>
+    <script type="text/javascript" src="./js/cityList.js"></script>
+    <script type="text/javascript" src="./js/selectCity.js"></script>
+
+</body>
+
+</html>
