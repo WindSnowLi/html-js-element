@@ -5,9 +5,9 @@ const addressnumber = document.getElementById('addressnumber')
 
 /*用于保存当前所选的省市区*/
 let current = {
-    prov: null,
-    city: null,
-    country: null
+    prov: '',
+    city: '',
+    country: ''
 };
 
 
@@ -27,10 +27,10 @@ function showCity(obj) {
         current.prov = val;
         country.length = 1;
         city.length = 1;
-        addressnumber.innerHTML = addressnumber.value=null;
+        addressnumber.innerHTML = addressnumber.value='';
     }
 
-    if (val != null) {
+    if (val != '') {
         for (let key in cityList[current.prov]['city']) {
             let cityOpt = document.createElement('option');
             cityOpt.innerText = cityOpt.value = key;
@@ -42,11 +42,12 @@ function showCity(obj) {
 /*根据所选的城市来显示县区列表*/
 function showCountry(obj) {
     let val = obj.options[obj.selectedIndex].value;
-    current.city = val;
-
-    if (val != null) {
+    if (val != current.city) {
+        current.city = val;
+        addressnumber.innerHTML = addressnumber.value='';
         country.length = 1; //清空之前的内容只留第一个默认选项
-        addressnumber.innerHTML = addressnumber.value=null;
+    }
+    if (val != '') {
         for (const key in cityList[current.prov]['city'][current.city]['country']) {
             const countryOpt = document.createElement('option');
             countryOpt.innerText =countryOpt.value = key
@@ -58,7 +59,7 @@ function showCountry(obj) {
 /*选择县区之后的处理函数*/
 function selecCountry(obj) {
     current.country = obj.options[obj.selectedIndex].value;
-    if (current.prov != null && current.city != null && current.country != null) {
+    if (current.prov != '' && current.city != '' && current.country != '') {
         addressnumber.innerHTML = addressnumber.value = cityList[current.prov]['city'][current.city]['country'][current.country]['code'];
     }
 }
