@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery动态加载另一HTML文件页面</title>
+</head>
+
+<body>
+    <div id="main_content"></div>
+</body>
+<!-- jQuery -->
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+    $(function () {
+        $("#main_content").load("./comments/title.html", function () {
+            alert("加载完成回调函数")
+        });
+    })
+</script>
+
+</html>
